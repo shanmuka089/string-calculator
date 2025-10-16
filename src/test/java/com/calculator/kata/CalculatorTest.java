@@ -81,5 +81,16 @@ public class CalculatorTest
             assertEquals("Invalid input: all parts must be integers.", e.getMessage());
         }
     }
+
+
+    @Test
+    public void shouldNotIncludeIfValuesGreaterThanThousand()
+    {
+        int res = calculator.add("1\n2000,3");
+        assertEquals(4, res);
+
+        int res2 = calculator.add("3\n2,1000\n5");
+        assertEquals(1010, res2);
+    }
     
 }
