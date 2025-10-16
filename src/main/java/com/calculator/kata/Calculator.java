@@ -15,6 +15,9 @@ public class Calculator
         try {
             for (String num : nums) {
                 int val = Integer.parseInt(num.trim());
+                if(val < 0) {
+                    throw new IllegalArgumentException("Negatives values not allowed: " + val);
+                }
                 if(val > 1000) continue;
                 sum += val;
             }

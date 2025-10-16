@@ -93,4 +93,20 @@ public class CalculatorTest
         assertEquals(1010, res2);
     }
     
+    @Test
+    public void shouldThrowErrorWhenNegativeNumbersAreGiven()
+    {
+        try {
+            calculator.add("1,-2,3");
+        } catch (IllegalArgumentException e) {
+            assertEquals("Negatives values not allowed: -2", e.getMessage());
+        }
+        
+        try {
+            calculator.add("//;\n-1;2");
+        } catch (IllegalArgumentException e) {
+            assertEquals("Negatives values not allowed: -1", e.getMessage());
+        }
+    }
+    
 }
