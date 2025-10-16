@@ -61,6 +61,9 @@ public class CalculatorTest
         
         int res3 = calculator.add("//%\n2%3");
         assertEquals(5, res3);
+
+        int res4 = calculator.add("//***\n1***2***3");
+        assertEquals(6, res4);
     }
     
     @Test
