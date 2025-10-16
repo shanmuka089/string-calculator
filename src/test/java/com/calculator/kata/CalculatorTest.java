@@ -43,5 +43,16 @@ public class CalculatorTest
         assertEquals(15, res);
     }
     
+    @Test
+    public void shouldReturnSumOfDigitsWhenNewLinesArePassed()
+    {
+        int res = calculator.add("1\n2,3");
+        assertEquals(6, res);
+
+        int res2 = calculator.add("3\n2,3\n5");
+        assertEquals(13, res2);
+    }
+    
+    
     
 }
