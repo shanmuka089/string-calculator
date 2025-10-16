@@ -53,6 +53,30 @@ public class CalculatorTest
         assertEquals(13, res2);
     }
     
+    @Test
+    public void shouldReturnSumWhenDifferentDelimitersArePassed()
+    {
+        int res = calculator.add("//;\n1;2");
+        assertEquals(3, res);
+        
+        int res3 = calculator.add("//%\n2%3");
+        assertEquals(5, res3);
+    }
     
+    @Test
+    public void shouldThrowErrorWhenInvalidInputIsGiven()
+    {
+        try {
+            calculator.add("1,\n");
+        } catch (IllegalArgumentException e) {
+            assertEquals("Invalid input: all parts must be integers.", e.getMessage());
+        }
+        
+        try {
+            calculator.add("1,X");
+        } catch (IllegalArgumentException e) {
+            assertEquals("Invalid input: all parts must be integers.", e.getMessage());
+        }
+    }
     
 }
