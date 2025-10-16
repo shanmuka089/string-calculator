@@ -1,4 +1,4 @@
-package com.caluculator.kata;
+package com.calculator.kata;
 
 public class Main
 {
