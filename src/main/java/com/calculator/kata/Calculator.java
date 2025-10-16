@@ -8,7 +8,7 @@ public class Calculator
         }
         
         if (numbers.contains(",")) {
-            String[] nums = numbers.split(",");
+            String[] nums = numbers.split(",|\n");
             int sum = 0;
             for (String num : nums) {
                 sum += Integer.parseInt(num);
