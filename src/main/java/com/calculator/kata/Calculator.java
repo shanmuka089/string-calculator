@@ -1,5 +1,7 @@
 package com.calculator.kata;
 
+import java.util.regex.Pattern;
+
 public class Calculator
 {
     public int add(String numbers) {
@@ -26,7 +28,8 @@ public class Calculator
             int newlineIndex = numbers.indexOf("\n");
             String customDelimiter = numbers.substring(2, newlineIndex);
             numbers = numbers.substring(newlineIndex + 1);
-            return numbers.split(customDelimiter + "|,|\n");
+            String numberSeparators = Pattern.quote(customDelimiter) + "|,|\n";
+            return numbers.split(numberSeparators);
         } else {
             return numbers.split(",|\n");
         }
