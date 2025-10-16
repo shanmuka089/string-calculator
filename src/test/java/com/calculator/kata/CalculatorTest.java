@@ -109,4 +109,13 @@ public class CalculatorTest
         }
     }
     
+    @Test
+    public void shouldReturnSumWhenPassingMultipleDelimiters() {
+        int res = calculator.add("//[*][%]\n1*2%3");
+        assertEquals(6, res);
+        
+        int res2 = calculator.add("//[***][%%]\n1***2%%3");
+        assertEquals(6, res2);
+    }
+    
 }
