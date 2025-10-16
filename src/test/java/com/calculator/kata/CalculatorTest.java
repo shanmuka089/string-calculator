@@ -81,5 +81,41 @@ public class CalculatorTest
             assertEquals("Invalid input: all parts must be integers.", e.getMessage());
         }
     }
+
+
+    @Test
+    public void shouldNotIncludeIfValuesGreaterThanThousand()
+    {
+        int res = calculator.add("1\n2000,3");
+        assertEquals(4, res);
+
+        int res2 = calculator.add("3\n2,1000\n5");
+        assertEquals(1010, res2);
+    }
+    
+    @Test
+    public void shouldThrowErrorWhenNegativeNumbersAreGiven()
+    {
+        try {
+            calculator.add("1,-2,3");
+        } catch (IllegalArgumentException e) {
+            assertEquals("Negatives values not allowed: -2", e.getMessage());
+        }
+        
+        try {
+            calculator.add("//;\n-1;2");
+        } catch (IllegalArgumentException e) {
+            assertEquals("Negatives values not allowed: -1", e.getMessage());
+        }
+    }
+    
+    @Test
+    public void shouldReturnSumWhenPassingMultipleDelimiters() {
+        int res = calculator.add("//[*][%]\n1*2%3");
+        assertEquals(6, res);
+        
+        int res2 = calculator.add("//[***][%%]\n1***2%%3");
+        assertEquals(6, res2);
+    }
     
 }
